@@ -1,0 +1,22 @@
+{
+  "name": "parsergibdd",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/index"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/werewolff/ParserGIBDD.git"
+  },
+  "author": "Sergey BOLK",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/werewolff/ParserGIBDD/issues"
+  },
+  "homepage": "https://github.com/werewolff/ParserGIBDD#readme",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.3"
+  }
+}
