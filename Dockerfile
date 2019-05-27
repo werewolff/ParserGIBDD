@@ -1,24 +1,18 @@
 FROM ubuntu:18.04
-# ubuntu setup
-RUN apt-get update -y
-RUN apt-get upgrade -y
-RUN apt-get install -y cron
-RUN apt-get install nodejs -y && apt-get install npm -y
-# install curl
-RUN apt-get install curl -y
-# setup working directory
+RUN apt-get update \
+    && apt-get install -y \
+    cron npm nodejs curl net-tools \
+    && apt-get clean
+
+RUN mkdir -p /usr/parser
+COPY package*.json /usr/parser/
+COPY ./src /usr/parser/src
+
 WORKDIR /usr/parser
-# copy
-COPY ./src/cron /etc/cron.d/parser
-COPY package*.json ./
-COPY ./src ./src
-# install dependences
 RUN npm install
-#bind crontab task
-RUN chmod 0644  /etc/cron.d/parser
-RUN crontab /etc/cron.d/parser
-# run cron
+
+COPY ./src/cron /etc/cron.d/parser
+RUN chmod +x /usr/parser/src/parser.sh
+
 CMD ["/bin/bash", "-c", "cron -f"]
-# expose port
-EXPOSE 8080
 
