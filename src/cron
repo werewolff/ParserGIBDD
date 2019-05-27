@@ -1,1 +1,1 @@
-* * * * * root /usr/parser/src/parser.sh
+* * * * * root /usr/parser/src/parser.sh >> /var/log/cron.log 2>&1
